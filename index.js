@@ -1,5 +1,6 @@
 import {tauri} from './node_modules/@tauri-apps/api/index.js';
 
+console.log(tauri);
 const js = document.querySelector('#javascript');
 js.className = '';
 if (window.rpc) {
