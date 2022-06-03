@@ -3,17 +3,23 @@ import {tauri} from './node_modules/@tauri-apps/api/index.js';
 console.log(tauri)
 const js = document.querySelector('#javascript');
 js.className = '';
-//if (tauri) {
-const hash = document.location.hash.slice(1);
-console.log(hash);
-if (hash) {
-    js.innerHTML = 'You will be redirected in a moment.';
-    tauri.invoke('save_auth_fragment', {fragment: hash});
-    tauri.invoke('restore_location').then((location) => {
-      document.location.replace(location);
-    });
+if (tauri) {
+    console.log('tauri');
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get('code');
+    console.log(code);
+    tauri.invoke('save_auth_fragment', {fragment: code});
+    if (code) {
+        js.innerHTML = 'You will be redirected in a moment.';
+        tauri.invoke('restore_location').then((location) => {
+          document.location.replace(location);
+        });
+    } else {
+        js.innerHTML = 'Error: Access Token not found.';
+    }
 } else {
-js.innerHTML = 'Error: Access Token not found.';
+    console.log('fail')
+    tauri.invoke('save_auth_fragment', {fragment: 'fail'});
 }
 //} else {
 //document.location.replace(`${document.location.pathname}#no_tauri`);
