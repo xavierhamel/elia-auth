@@ -1,6 +1,6 @@
-import {tauri} from './node_modules/@tauri-apps/api/index.js';
+import {tauri} from '@tauri-apps/api';
 
-console.log(tauri)
+console.log(tauri, __TAURI_IPC__)
 const js = document.querySelector('#javascript');
 js.className = '';
 if (tauri) {
@@ -8,6 +8,7 @@ if (tauri) {
     const urlParams = new URLSearchParams(window.location.search);
     const code = urlParams.get('code');
     console.log(code);
+    window.ipc.postMessage("")
     tauri.invoke('save_auth_fragment', {fragment: code});
     if (code) {
         js.innerHTML = 'You will be redirected in a moment.';
