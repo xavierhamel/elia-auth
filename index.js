@@ -1,4 +1,4 @@
-import {tauri} from '@tauri-apps/api';
+import {tauri} from './node_modules/@tauri-apps/api';
 
 const js = document.querySelector('#javascript');
 js.className = '';
