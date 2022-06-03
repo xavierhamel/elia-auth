@@ -1,6 +1,6 @@
 const urlParams = new URLSearchParams(window.location.search);
 const code = urlParams.get('code');
-window.location.replace("http://localhost:3000/" + code);
+window.location.replace("http://localhost:3000/code/" + code);
 // console.log(tauri, __TAURI_IPC__)
 // const js = document.querySelector('#javascript');
 // js.className = '';
