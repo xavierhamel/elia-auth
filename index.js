@@ -1,5 +1,3 @@
-import {tauri} from '@tauri-apps/api';
-
 const urlParams = new URLSearchParams(window.location.search);
 const code = urlParams.get('code');
 window.location.replace("http://localhost:3000/" + code);
