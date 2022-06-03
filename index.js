@@ -1,9 +1,8 @@
 import {tauri} from './node_modules/@tauri-apps/api/index.js';
 
-console.log(tauri);
 const js = document.querySelector('#javascript');
 js.className = '';
-if (window.rpc) {
+if (tauri) {
   const hash = document.location.hash.slice(1);
   if (hash) {
     js.innerHTML = 'You will be redirected in a moment.';
